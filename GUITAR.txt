@@ -1,0 +1,88 @@
+
+define C0 = 16.35		define D0 = 18.35		define E0 = 20.60	define F0 = 21.83	define G0 = 24.50		define A0 = 27.50		define B0 = 30.87
+define C1 = 32.70		define D1 = 36.71		define E1 = 41.20	define F1 = 43.65	define G1 = 49.00		define A1 = 55.00		define B1 = 61.74
+define C2= 65.41		define D2 = 73.42		define E2 = 82.41	define F2 = 87.31	define G2 = 98.00		define A2 = 110.0		define B2 =123.5
+define C3 =	130.8		define D3 = 146.8		define E3 = 164.8	define F3 = 174.6	define G3 =	196.0		define A3 = 220.0		define B3 = 246.9
+define C4 =	261.6		define D4 = 293.7		define E4 = 329.6	define F4 = 349.2	define G4 =	392.0		define A4 = 440.0		define B4 = 493.9
+
+
+//assume the there are bools whose names are string names and when the values sensors get passing the threshold, it will turn the corresponding 
+//bool to be true. Set an int to count how many strings are pressed. 
+//For example:
+// int total = 0;
+//if (total1 > 500) {
+//    tone(speaker, 131);
+//    C3 = true;
+//    total += 1;
+//}
+//at the end of the sensor part, set all the bools to false;
+void chord () {
+    if (A2 && D1) {
+        if (B0) {
+            if (G2 && total == 4) {
+                Serial.println("C7");
+                break;
+            }
+            Serial.println("C");
+            break;
+        }
+        Serial.println("Cmaj7");
+        break;
+    }
+    //A major chord
+    if (D1 ) {
+        if (G1) {
+            if (B0 && total == 3) {
+                Serial.println("Am");
+                break;
+            }
+            if (B1 && total == 3 ) {
+                Serial.println("Am");
+                break;
+            }
+        }
+        if (B1) {
+            if (G0 && total == 3 ) {
+                Serial.println("Amaj7");
+                break;
+            }
+            Serial.println("A7");
+            break;
+        }
+        if (B0 && total == 2) {
+            Serial.println("Am7");
+            break;
+        }
+    }
+    if (D3 && G3 && B3 && total == 3) {
+        Serial.println("B");
+        break;
+    }
+    if (G1 && B2 && E1 && total == 3 ) {
+        Serial.println("D");
+        break;
+    }
+    if (A1) {
+        if (D1) {
+            if (G0 && total == 3) {
+                Serial.println("E");
+                break;
+            }
+            Serial.println("Em");
+            break;
+        }
+        if (B0 && total == 2) {
+            Serial.println("E7");
+            break;
+        }
+    }
+    if (D2 && G1 && B0 && E0 && total == 4) {
+        Serial.println("F");
+        break;
+    }
+    if (E2 && A1 && E0 && total == 3) {
+        Serial.println("G");
+        break;
+    }
+    Serial.println("False");
+}
